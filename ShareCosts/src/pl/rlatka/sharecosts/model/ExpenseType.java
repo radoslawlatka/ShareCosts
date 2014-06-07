@@ -1,12 +1,12 @@
 package pl.rlatka.sharecosts.model;
 
-public class DebtType {
+public class ExpenseType {
 	
 	private int id;
 	private String name;
 	private String description;
 	
-	public DebtType(int id, String name, String description) {
+	public ExpenseType(int id, String name, String description) {
 		this.id = id;
 		this.name = name;
 		this.description = description;

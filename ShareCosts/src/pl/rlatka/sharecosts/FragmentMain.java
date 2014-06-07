@@ -3,18 +3,20 @@ package pl.rlatka.sharecosts;
 import java.sql.SQLException;
 
 import android.app.Fragment;
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class FragmentMain extends Fragment {
 
 	private ShareCosts shareCosts;
 	private TextView nameText, balanceText, debtsText, creditsText;
+	private Button detailsButton;
 	
 	public FragmentMain() {
 		shareCosts = ShareCosts.getInstance();
@@ -29,14 +31,30 @@ public class FragmentMain extends Fragment {
 		balanceText = (TextView) view.findViewById(R.id.balance);
 		debtsText = (TextView) view.findViewById(R.id.debts);
 		creditsText = (TextView) view.findViewById(R.id.credits);
+		detailsButton = (Button) view.findViewById(R.id.button_details);
 		
 		nameText.setText(shareCosts.getFlatmate().getName());
 	
+		initListeners();
+		
 		new GetData().execute(0);
 		
 		return view;
 	}
 	
+	private void initListeners() {
+		detailsButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+
+				Intent details = new Intent(getActivity(), DialogDetails.class);
+				startActivity(details);
+				
+			}
+		});
+		
+	}
+
 	private void setDebts(double debts) {
 		debtsText.setText("-" + debts);
 	}
@@ -67,7 +85,7 @@ public class FragmentMain extends Fragment {
 			try {
 				shareCosts.getDatabase().open();
 				
-				debts = shareCosts.getDatabase().getDebtsAmmount(shareCosts.getFlatmate());
+				debts = shareCosts.getDatabase().getExpensesAmmount(shareCosts.getFlatmate());
 				credits = shareCosts.getDatabase().getCreditsAmmount(shareCosts.getFlatmate());
 
 			} catch (SQLException e) {}

@@ -16,7 +16,7 @@ public class Settings extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.settings_activity);
+		setContentView(R.layout.activity_settings);
 		
 		prefs = getSharedPreferences(ShareCosts.PREFS_NAME, 0);
 		

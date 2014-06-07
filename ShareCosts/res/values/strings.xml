@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">Share Costs</string>
+    <string name="label_add_flatmate">Dodaj mieszkańca</string>
     <string name="action_settings">Settings</string>
     <string name="text_database_name">Nazwa bazy danych:</string>
     <string name="text_database_address">Adres bazy danych:</string>
@@ -12,19 +13,41 @@
     <string name="text_flat_name">Nazwa mieszkania</string>
     <string name="text_flatmate">Lokator</string>
     <string name="text_password">Hasło</string>
-    <string name="button_login">Zaloguj</string>
-    <string name="button_register">Zarejestruj</string>
     <string name="text_init_password">Hasło początkowe</string>
     <string name="text_flatmates">Lokatorzy</string>
-    <string name="button_add">Dodaj</string>
     <string name="text_phone">Numer telefonu</string>
     <string name="text_name">Imię</string>
     <string name="text_enter_name">Podaj imię lokatora</string>
     <string name="text_add_flatmate">Dodaj lokatora</string>
     <string name="text_your_balance">Twój bilans:</string>
     <string name="text_debt">Dług</string>
-    <string name="text_debts">Należności:</string>
-    <string name="text_credit">Kredyt</string>
-    <string name="text_credits">Kredyty:</string>
+    <string name="text_debts">Długi</string>
+    <string name="text_your_debts">Twoje długi</string>
+    <string name="text_add_expense">Dodaj wydatek</string>
+    <string name="text_expense">Wydatek</string>
+    <string name="text_expenses">Wydatki</string>
+    <string name="text_your_expenses">Twoje wydatki</string>
+    <string name="text_details">Szczegóły:</string>
+    <string name="text_amount">Kwota</string>
+    <string name="text_description">Opis</string>
+    <string name="text_login">Zaloguj</string>
+    <string name="text_logout">Wyloguj</string>
+    <string name="text_select_flatmates">Wybierz współlokatorów: </string>
+    <string name="button_add">Dodaj</string>
+    <string name="button_shopping">Zakupy</string>
+    <string name="button_rent">Czynsz</string>
+    <string name="button_credit">Pożyczka</string>
+    <string name="button_bills">Rachunki</string>
+    <string name="button_party">Impreza</string>
+    <string name="button_debt">Pożyczka</string>
+    <string name="button_remind">Przypomij</string>
+    <string name="button_others">Inne</string>
+    <string name="button_close">Zamknij</string>
+    <string name="button_login">Zaloguj</string>
+    <string name="button_register">Zarejestruj</string>
+    <string name="toast_empty_fields">Pola nie mogą być puste</string>
+    <string name="toast_registration_successful">Rejestracja przebiegła pomyślnie</string>
+    <string name="toast_registration_failed">Rejestracja nie powiodła się</string>
+    <string name="toast_registration_exist">Istnieje już mieszkanie o takiej nazwie</string>
 
 </resources>

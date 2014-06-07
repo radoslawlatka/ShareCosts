@@ -33,6 +33,18 @@
             android:windowSoftInputMode="stateHidden" >
         </activity>
         
+        <activity
+            android:name="pl.rlatka.sharecosts.ActivityRegister"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        
+        <activity
+            android:name="pl.rlatka.sharecosts.DialogDetails"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        
     </application>
 
 </manifest>

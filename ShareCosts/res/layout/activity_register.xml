@@ -5,15 +5,6 @@
     android:orientation="vertical"
     android:padding="@dimen/margin_normall" >
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/text_flat_name"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
@@ -37,7 +28,26 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/flat_name"
+        android:id="@+id/edit_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="@dimen/margin_normall"
+        android:layout_below="@+id/edit_flat_name"
+        android:text="@string/text_init_password"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/edit_flat_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -47,43 +57,41 @@
         android:maxLength="16" />
 
     <TextView
-        android:id="@+id/balance"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/flat_name"
-        android:layout_marginTop="@dimen/margin_normall"
-        android:text="@string/text_init_password"
+        android:layout_alignParentTop="true"
+        android:text="@string/text_flat_name"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/balance"
-        android:ems="10"
-        android:inputType="textPassword" />
-
-    <ListView
-        android:id="@+id/flatmate_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/linearLayout1"
-        android:layout_alignLeft="@+id/password"
-        android:layout_below="@+id/button_add_flatmate"
-        android:layout_marginTop="@dimen/margin_normall" >
-
-    </ListView>
 
     <Button
         android:id="@+id/button_add_flatmate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/password"
-        android:layout_below="@+id/password"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/edit_password"
         android:layout_marginTop="@dimen/margin_normall"
         android:drawableRight="@android:drawable/ic_input_add"
         android:text="@string/text_add_flatmate" />
+
+    <ListView
+        android:id="@+id/list_flatmates"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_above="@+id/progressBar"
+        android:layout_alignLeft="@+id/button_add_flatmate"
+        android:layout_below="@+id/button_add_flatmate"
+        android:layout_marginTop="@dimen/margin_normall" >
+
+    </ListView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_above="@+id/linearLayout1"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

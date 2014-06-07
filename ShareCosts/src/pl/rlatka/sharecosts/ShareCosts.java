@@ -19,6 +19,9 @@ public class ShareCosts extends Application {
 	public static final String PREFS_DB_USERNAME = "db_username";
 	public static final String PREFS_DB_PASSWORD = "db_password";
 	public static final String PREFS_DB_PORT = "db_port";
+	public static final String PREFS_FLATMATE_NAME = "flatmate_name";
+	public static final String PREFS_FLATMATE_PASSWORD = "flatmate_password";
+	public static final String PREFS_FLAT_NAME = "flat_name";
 
 	private SharedPreferences prefs;
 	private Flat flat;

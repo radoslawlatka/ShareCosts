@@ -9,8 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import pl.rlatka.sharecosts.ShareCosts;
-import pl.rlatka.sharecosts.model.Debt;
-import pl.rlatka.sharecosts.model.DebtType;
+import pl.rlatka.sharecosts.model.Expense;
+import pl.rlatka.sharecosts.model.ExpenseType;
 import pl.rlatka.sharecosts.model.Flat;
 import pl.rlatka.sharecosts.model.Flatmate;
 import pl.rlatka.sharecosts.model.Status;
@@ -46,14 +46,14 @@ public class ShareCostsDatabase {
 	public static final String FLATMATE_DESCRIPTION = "description";
     
 	// table DEBT
-	public static final String DEBT_TABLE = "debt";
-	public static final String DEBT_ID = "id";
-	public static final String DEBT_CREDITOR_ID = "creditor_id";
-	public static final String DEBT_DEBTOR_ID = "debtor_id";
-	public static final String DEBT_DEBT_TYPE_ID = "debt_type_id";
-	public static final String DEBT_STATUS_ID = "status_id";
-	public static final String DEBT_AMOUNT = "amount";
-	public static final String DEBT_DESCRIPTION = "description";
+	public static final String EXPENSE_TABLE = "debt";
+	public static final String EXPENSE_ID = "id";
+	public static final String EXPENSE_CREDITOR_ID = "creditor_id";
+	public static final String EXPENSE_DEBTOR_ID = "debtor_id";
+	public static final String EXPENSE_DEBT_TYPE_ID = "debt_type_id";
+	public static final String EXPENSE_STATUS_ID = "status_id";
+	public static final String EXPENSE_AMOUNT = "amount";
+	public static final String EXPENSE_DESCRIPTION = "description";
 	
 	// table STATUS
 	public static final String STATUS_TABLE = "status";
@@ -61,10 +61,10 @@ public class ShareCostsDatabase {
 	public static final String STATUS_NAME = "name";
 	
 	// table DEBT_TYPE
-	public static final String DEBT_TYPE_TABLE = "debt_type";
-	public static final String DEBT_TYPE_ID = "id";
-	public static final String DEBT_TYPE_NAME = "name";
-	public static final String DEBT_TYPE_DESCRIPTION = "description";
+	public static final String EXPENSE_TYPE_TABLE = "debt_type";
+	public static final String EXPENSE_TYPE_ID = "id";
+	public static final String EXPENSE_TYPE_NAME = "name";
+	public static final String EXPENSE_TYPE_DESCRIPTION = "description";
 
 	private Connection conn = null;
 	private Context context;
@@ -85,7 +85,7 @@ public class ShareCostsDatabase {
 	public double getCreditsAmmount(Flatmate flatmate) throws SQLException {
 		Log.d(DTAG, "Getting credits ammount...");
 		try {			
-			pStatement = conn.prepareStatement("SELECT SUM(" + DEBT_AMOUNT + ") FROM " + DEBT_TABLE + " WHERE " + DEBT_CREDITOR_ID + "=?");
+			pStatement = conn.prepareStatement("SELECT SUM(" + EXPENSE_AMOUNT + ") FROM " + EXPENSE_TABLE + " WHERE " + EXPENSE_CREDITOR_ID + "=?");
 			pStatement.setInt(1, flatmate.getId());
 			pStatement.executeQuery();
 			
@@ -103,10 +103,10 @@ public class ShareCostsDatabase {
 		}	
 	}
 	
-	public double getDebtsAmmount(Flatmate flatmate) throws SQLException {
+	public double getExpensesAmmount(Flatmate flatmate) throws SQLException {
 		Log.d(DTAG, "Getting credits ammount...");
 		try {			
-			pStatement = conn.prepareStatement("SELECT SUM(" + DEBT_AMOUNT + ") FROM " + DEBT_TABLE + " WHERE " + DEBT_DEBTOR_ID + "=?");
+			pStatement = conn.prepareStatement("SELECT SUM(" + EXPENSE_AMOUNT + ") FROM " + EXPENSE_TABLE + " WHERE " + EXPENSE_DEBTOR_ID + "=?");
 			pStatement.setInt(1, flatmate.getId());
 			pStatement.executeQuery();
 			
@@ -124,12 +124,12 @@ public class ShareCostsDatabase {
 		}	
 	}
 	
-	public void setStatus(Debt debt, Status status) throws SQLException {
+	public void setStatus(Expense debt, Status status) throws SQLException {
 		Log.d(DTAG, "Setting status...");
 			
-			pStatement = conn.prepareStatement("UPDATE " + DEBT_TABLE + " SET "  + 
-					DEBT_STATUS_ID + "=?" + 
-					" WHERE " + DEBT_ID + "=?");
+			pStatement = conn.prepareStatement("UPDATE " + EXPENSE_TABLE + " SET "  + 
+					EXPENSE_STATUS_ID + "=?" + 
+					" WHERE " + EXPENSE_ID + "=?");
 
 			pStatement.setInt(1, status.getId());
 			pStatement.setInt(2, debt.getId());
@@ -166,16 +166,16 @@ public class ShareCostsDatabase {
 		}
 	}
 	
-	public void addDebt(Debt debt) throws SQLException {
+	public void addExpense(Expense debt) throws SQLException {
 		Log.d(DTAG, "Inserting new debt...");
 		
 		try {			
-			pStatement = conn.prepareStatement("INSERT INTO " + DEBT_TABLE + " (" +
-					DEBT_CREDITOR_ID + ", " +
-					DEBT_DEBTOR_ID + ", " +
-					DEBT_DEBT_TYPE_ID + ", " +
-					DEBT_AMOUNT + ", " +
-					DEBT_DESCRIPTION + ") " +
+			pStatement = conn.prepareStatement("INSERT INTO " + EXPENSE_TABLE + " (" +
+					EXPENSE_CREDITOR_ID + ", " +
+					EXPENSE_DEBTOR_ID + ", " +
+					EXPENSE_DEBT_TYPE_ID + ", " +
+					EXPENSE_AMOUNT + ", " +
+					EXPENSE_DESCRIPTION + ") " +
 					" VALUES (?, ? ,? , ?, ?)",
 					Statement.RETURN_GENERATED_KEYS);
 
@@ -237,7 +237,7 @@ public class ShareCostsDatabase {
 		}
 	}
 	
-	public void addFlat(Flat flat) throws SQLException {
+	public int addFlat(Flat flat) throws SQLException {
 		Log.d(DTAG, "Inserting new flat...");
 		try {
 			pStatement = conn.prepareStatement("INSERT INTO " + FLAT_TABLE + " (" + FLAT_NAME +
@@ -254,6 +254,7 @@ public class ShareCostsDatabase {
 			
 			if( rs.next() ) {
 				flat.setId(rs.getInt(1));
+				return rs.getInt(1);
 			} else {
 				throw new SQLException("Creating flat failed, no generated key obtained");
 			}
@@ -264,33 +265,33 @@ public class ShareCostsDatabase {
 		}
 	}
 	
-	public ArrayList<Debt> getDebts(int flatmateId) throws SQLException {
-		return getDebts(DEBT_DEBTOR_ID, flatmateId);
+	public ArrayList<Expense> getDebts(int flatmateId) throws SQLException {
+		return getDebts(EXPENSE_DEBTOR_ID, flatmateId);
 	}
 
-	public ArrayList<Debt> getCredits(int flatmateId) throws SQLException {
-		return getDebts(DEBT_CREDITOR_ID, flatmateId);
+	public ArrayList<Expense> getCredits(int flatmateId) throws SQLException {
+		return getDebts(EXPENSE_CREDITOR_ID, flatmateId);
 	}
 	
-	private ArrayList<Debt> getDebts(String whoId,int flatmateId) throws SQLException {
-		ArrayList<Debt> debts = new ArrayList<>();
+	private ArrayList<Expense> getDebts(String whoId,int flatmateId) throws SQLException {
+		ArrayList<Expense> debts = new ArrayList<>();
 		
 		try {
-			pStatement = conn.prepareStatement("SELECT * FROM " + DEBT_TABLE
+			pStatement = conn.prepareStatement("SELECT * FROM " + EXPENSE_TABLE
 					+ " WHERE " + whoId + "=?");
 			pStatement.setInt(1, flatmateId);
 			
 			ResultSet rs = pStatement.executeQuery();
 			
 			while( rs.next() ) {
-				debts.add( new Debt(
-						rs.getInt(DEBT_ID), 
-						getFlatmateById(rs.getInt(DEBT_CREDITOR_ID)), 
-						getFlatmateById(rs.getInt(DEBT_DEBTOR_ID)), 
-						getDebtType(rs.getInt(DEBT_DEBT_TYPE_ID)),
-						getStatus(rs.getInt(DEBT_STATUS_ID)),
-						rs.getDouble(DEBT_AMOUNT),
-						rs.getString(DEBT_DESCRIPTION)
+				debts.add( new Expense(
+						rs.getInt(EXPENSE_ID), 
+						getFlatmateById(rs.getInt(EXPENSE_CREDITOR_ID)), 
+						getFlatmateById(rs.getInt(EXPENSE_DEBTOR_ID)), 
+						getDebtType(rs.getInt(EXPENSE_DEBT_TYPE_ID)),
+						getStatus(rs.getInt(EXPENSE_STATUS_ID)),
+						rs.getDouble(EXPENSE_AMOUNT),
+						rs.getString(EXPENSE_DESCRIPTION)
 						) );
 			}
 		} finally {
@@ -301,17 +302,17 @@ public class ShareCostsDatabase {
 		return debts;
 	}
 
-	public ArrayList<DebtType> getDebtTypes() throws SQLException {
+	public ArrayList<ExpenseType> getDebtTypes() throws SQLException {
 		Log.d(DTAG, "Getting all debt types...");
-		ArrayList<DebtType> types = new ArrayList<>();
+		ArrayList<ExpenseType> types = new ArrayList<>();
 		
 		try {
-			pStatement = conn.prepareStatement("SELECT * FROM " + DEBT_TYPE_TABLE);
+			pStatement = conn.prepareStatement("SELECT * FROM " + EXPENSE_TYPE_TABLE);
 			rs = pStatement.executeQuery();
 
 			while( rs.next() ) {
-				types.add( new DebtType(rs.getInt(DEBT_TYPE_ID), rs.getString(DEBT_TYPE_NAME),
-						rs.getString(DEBT_TYPE_DESCRIPTION)) );
+				types.add( new ExpenseType(rs.getInt(EXPENSE_TYPE_ID), rs.getString(EXPENSE_TYPE_NAME),
+						rs.getString(EXPENSE_TYPE_DESCRIPTION)) );
 			}
 		} finally {
 			if( rs != null )
@@ -320,19 +321,19 @@ public class ShareCostsDatabase {
 		return types;
 	}
 
-	public DebtType getDebtType(int id) throws SQLException {
+	public ExpenseType getDebtType(int id) throws SQLException {
 		Log.d(DTAG, "Getting debt type by id...");
 		
 		try {
-			pStatement = conn.prepareStatement("SELECT * FROM " + DEBT_TYPE_TABLE
-					+ " WHERE " + DEBT_TYPE_ID + "=?");
+			pStatement = conn.prepareStatement("SELECT * FROM " + EXPENSE_TYPE_TABLE
+					+ " WHERE " + EXPENSE_TYPE_ID + "=?");
 			pStatement.setInt(1, id);
 			
 			rs = pStatement.executeQuery();
 			
 			if( rs.first())
-				return new DebtType(rs.getInt(DEBT_TYPE_ID), rs.getString(DEBT_TYPE_NAME),
-						rs.getString(DEBT_TYPE_DESCRIPTION));
+				return new ExpenseType(rs.getInt(EXPENSE_TYPE_ID), rs.getString(EXPENSE_TYPE_NAME),
+						rs.getString(EXPENSE_TYPE_DESCRIPTION));
 		} finally {
 			if( rs != null )
 				rs.close();

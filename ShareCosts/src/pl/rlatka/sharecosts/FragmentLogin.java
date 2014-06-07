@@ -4,10 +4,12 @@ import java.sql.SQLException;
 
 import pl.rlatka.sharecosts.database.ShareCostsDatabase;
 import pl.rlatka.sharecosts.model.Flatmate;
+import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +35,7 @@ public class FragmentLogin extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.login_activity, container, false);
+		View view = inflater.inflate(R.layout.fragment_login, container, false);
 
 		flatNameEdit = (EditText) view.findViewById(R.id.flat_name);
 		flatmateNameEdit = (EditText) view.findViewById(R.id.flatmate_name);
@@ -43,7 +45,6 @@ public class FragmentLogin extends Fragment {
 		progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
 
 		loginButton.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 
@@ -51,16 +52,25 @@ public class FragmentLogin extends Fragment {
 						.getSystemService(Context.INPUT_METHOD_SERVICE);
 				imm.hideSoftInputFromWindow(passwordEdit.getWindowToken(), 0);
 
-				new LoginTask().execute(flatNameEdit.getText().toString(),
+				new Login().execute(flatNameEdit.getText().toString(),
 						flatmateNameEdit.getText().toString(), 
 						Sha256.encode(flatmateNameEdit.getText().toString(), passwordEdit.getText().toString(), 500));
+			}
+		});
+		
+		registerButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+
+				Intent intent = new Intent(getActivity(), ActivityRegister.class);
+				startActivity(intent);
 			}
 		});
 
 		return view;
 	}
 
-	private class LoginTask extends AsyncTask<String, Boolean, Integer> {
+	private class Login extends AsyncTask<String, Boolean, Integer> {
 
 		@Override
 		protected void onPreExecute() {
@@ -74,11 +84,10 @@ public class FragmentLogin extends Fragment {
 			progressBar.setVisibility(View.INVISIBLE);
 			switch (result) {
 			case 1:
-				//Toast.makeText(getActivity(), "Zalogowano!", Toast.LENGTH_SHORT)
-				//.show();
+				Toast.makeText(getActivity(), "Zalogowano!", Toast.LENGTH_SHORT).show();
 
 				getFragmentManager().beginTransaction().replace(R.id.container, new FragmentMain()).commit();
-
+				
 				break;
 			case 2:
 				Toast.makeText(getActivity(), "Nie mo¿na zalogowaæ!",
@@ -109,6 +118,12 @@ public class FragmentLogin extends Fragment {
 							break;
 						}
 					}
+
+					SharedPreferences.Editor edit = getActivity().getSharedPreferences(ShareCosts.PREFS_NAME, 0).edit();
+					edit.putString(ShareCosts.PREFS_FLAT_NAME, params[0]);
+					edit.putString(ShareCosts.PREFS_FLATMATE_NAME, params[1]);
+					edit.putString(ShareCosts.PREFS_FLATMATE_PASSWORD, params[2]);
+					edit.commit();
 
 					return 1;
 				}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin" >
+
+    <EditText
+        android:id="@+id/edit_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:ems="6"
+        android:hint="@string/text_amount"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edit_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/edit_amount"
+        android:ems="10"
+        android:hint="@string/text_description"
+        android:inputType="textMultiLine"
+        android:lines="3"
+        android:maxLength="200"
+        android:maxLines="5"
+        android:minLines="3" />
+
+    <TextView
+        android:id="@+id/text_select_flatmates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/edit_description"
+        android:layout_marginTop="@dimen/margin_normall"
+        android:text="@string/text_select_flatmates" />
+
+    <ListView
+        android:id="@+id/list_flatmates"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button_ok"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/text_select_flatmates" >
+    </ListView>
+
+    <Button
+        android:id="@+id/button_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@android:string/ok" />
+
+    <Button
+        android:id="@+id/button_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/button_ok"
+        android:text="@android:string/cancel" />
+
+</RelativeLayout>

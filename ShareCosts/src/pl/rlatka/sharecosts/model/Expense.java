@@ -1,15 +1,15 @@
 package pl.rlatka.sharecosts.model;
 
-public class Debt {
+public class Expense {
 	private int id;
 	private Flatmate creditor;
 	private Flatmate debtor;
-	private DebtType type;
+	private ExpenseType type;
 	private Status status;
 	private double ammount;
 	private String description;
 	
-	public Debt(int id, Flatmate creditor, Flatmate debtor, DebtType type,
+	public Expense(int id, Flatmate creditor, Flatmate debtor, ExpenseType type,
 			Status status, double ammount, String description) {
 		this.id = id;
 		this.creditor = creditor;
@@ -44,11 +44,11 @@ public class Debt {
 		this.debtor = debtor;
 	}
 
-	public DebtType getType() {
+	public ExpenseType getType() {
 		return type;
 	}
 
-	public void setType(DebtType type) {
+	public void setType(ExpenseType type) {
 		this.type = type;
 	}
 
