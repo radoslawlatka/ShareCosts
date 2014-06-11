@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:textColor="@color/red"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -17,7 +18,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_alignRight="@+id/text_description"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000" />
 
     <TextView
         android:id="@+id/text_description"
@@ -25,6 +28,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/text_flatmate_name"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_toLeftOf="@+id/text_amount"
+        android:maxLines="2"
+        android:minLines="1"
+        android:singleLine="false"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#000" />
 
 </RelativeLayout>

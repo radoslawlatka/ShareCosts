@@ -6,17 +6,17 @@ public class Expense {
 	private Flatmate debtor;
 	private ExpenseType type;
 	private Status status;
-	private double ammount;
+	private double amount;
 	private String description;
 	
 	public Expense(int id, Flatmate creditor, Flatmate debtor, ExpenseType type,
-			Status status, double ammount, String description) {
+			Status status, double amount, String description) {
 		this.id = id;
 		this.creditor = creditor;
 		this.debtor = debtor;
 		this.type = type;
 		this.status = status;
-		this.ammount = ammount;
+		this.amount = amount;
 		this.description = description;
 	}
 
@@ -60,12 +60,12 @@ public class Expense {
 		this.status = status;
 	}
 
-	public double getAmmount() {
-		return ammount;
+	public double getAmount() {
+		return amount;
 	}
 
-	public void setAmmount(double ammount) {
-		this.ammount = ammount;
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 
 	public String getDescription() {
@@ -80,11 +80,11 @@ public class Expense {
 	public String toString() {
 		if( 1 == status.getId() )
 			return id + ", " + debtor.getName() + " LECI HAJS "
-				+ String.format("%.2f", ammount) + "z³ dla "
+				+ String.format("%.2f", amount) + "z³ dla "
 				+ creditor.getName() + " za " + type.getName();
 		else 
 			return id + ", " + debtor.getName() + " ZAP£ACI£ "
-			+ String.format("%.2f", ammount) + "z³ dla "
+			+ String.format("%.2f", amount) + "z³ dla "
 			+ creditor.getName() + " za " + type.getName();
 	}
 	

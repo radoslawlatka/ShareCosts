@@ -99,7 +99,8 @@ public class MainActivity extends FragmentActivity {
 			edit.putString(ShareCosts.PREFS_FLATMATE_PASSWORD, "");
 			edit.commit();
 			
-			getFragmentManager().beginTransaction().replace(R.id.container, new FragmentLogin()).commit();
+			getFragmentManager().beginTransaction().replace(R.id.container, new FragmentLogin()).commitAllowingStateLoss();
+			
 			return true;
 
 		}

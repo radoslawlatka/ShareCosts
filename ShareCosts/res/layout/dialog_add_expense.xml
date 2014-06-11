@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="@dimen/activity_horizontal_margin" >
-
-    <EditText
-        android:id="@+id/edit_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:ems="6"
-        android:hint="@string/text_amount"
-        android:inputType="number" />
 
     <EditText
         android:id="@+id/edit_description"
@@ -62,5 +52,27 @@
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/button_ok"
         android:text="@android:string/cancel" />
+
+    <TextView
+        android:id="@+id/text_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/edit_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_normall"
+        android:layout_alignLeft="@+id/text_category"
+        android:layout_below="@+id/text_category"
+        android:ems="6"
+        android:hint="@string/text_amount"
+        android:inputType="numberDecimal" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>

@@ -26,7 +26,7 @@ public class ActivityRegister extends Activity {
 	private EditText flatNameEdit, passwordEdit;
 	private Button registerButton, cancelButton, addFlatmateButton;
 	private ListView flatmatesList;
-	private AdapterFlatmatesList flatmatesAdapter;
+	private AdapterFlatmatesListReg flatmatesAdapter;
 	private ProgressBar progressBar;
 	//private ArrayList<Flatmate> flatmates;
 	
@@ -35,7 +35,7 @@ public class ActivityRegister extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
 		
-		flatmatesAdapter = new AdapterFlatmatesList(this, R.layout.row_registration_list, new ArrayList<Flatmate>());
+		flatmatesAdapter = new AdapterFlatmatesListReg(this, R.layout.row_registration_list, new ArrayList<Flatmate>());
 		
 		flatNameEdit = (EditText) findViewById(R.id.edit_flat_name);
 		passwordEdit = (EditText) findViewById(R.id.edit_password);

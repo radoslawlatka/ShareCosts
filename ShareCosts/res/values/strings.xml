@@ -3,6 +3,8 @@
 
     <string name="app_name">Share Costs</string>
     <string name="label_add_flatmate">Dodaj mieszkańca</string>
+    <string name="label_details">Szczegóły</string>
+    <string name="label_add_expense">Dodaj wydatek</string>
     <string name="action_settings">Settings</string>
     <string name="text_database_name">Nazwa bazy danych:</string>
     <string name="text_database_address">Adres bazy danych:</string>
@@ -29,6 +31,7 @@
     <string name="text_your_expenses">Twoje wydatki</string>
     <string name="text_details">Szczegóły:</string>
     <string name="text_amount">Kwota</string>
+    <string name="text_category">Kategoria</string>
     <string name="text_description">Opis</string>
     <string name="text_login">Zaloguj</string>
     <string name="text_logout">Wyloguj</string>
@@ -49,5 +52,9 @@
     <string name="toast_registration_successful">Rejestracja przebiegła pomyślnie</string>
     <string name="toast_registration_failed">Rejestracja nie powiodła się</string>
     <string name="toast_registration_exist">Istnieje już mieszkanie o takiej nazwie</string>
+    <string name="toast_connection_failed">Połączenie nie powiodło się</string>
+    <string name="toast_expense_added">Dodano nowy wydatek</string>
+    <string name="toast_incorrect_amount">Niepoprawna wartość</string>
+    <string name="toast_any_flatmate">Nie wybrałeś żadnego lokatora</string>
 
 </resources>

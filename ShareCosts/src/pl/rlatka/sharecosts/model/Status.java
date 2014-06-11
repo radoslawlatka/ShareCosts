@@ -5,7 +5,6 @@ public class Status {
 	private String name;
 	
 	public Status(int id, String name) {
-		super();
 		this.id = id;
 		this.name = name;
 	}

@@ -10,13 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class FragmentMain extends Fragment {
 
 	private ShareCosts shareCosts;
 	private TextView nameText, balanceText, debtsText, creditsText;
-	private Button detailsButton;
+	private ImageButton detailsButton;
+	private Button shoppingButton;
 	
 	public FragmentMain() {
 		shareCosts = ShareCosts.getInstance();
@@ -31,7 +33,8 @@ public class FragmentMain extends Fragment {
 		balanceText = (TextView) view.findViewById(R.id.balance);
 		debtsText = (TextView) view.findViewById(R.id.debts);
 		creditsText = (TextView) view.findViewById(R.id.credits);
-		detailsButton = (Button) view.findViewById(R.id.button_details);
+		detailsButton = (ImageButton) view.findViewById(R.id.button_details);
+		shoppingButton= (Button) view.findViewById(R.id.button_shopping);
 		
 		nameText.setText(shareCosts.getFlatmate().getName());
 	
@@ -53,6 +56,14 @@ public class FragmentMain extends Fragment {
 			}
 		});
 		
+		shoppingButton.setOnClickListener(new View.OnClickListener() {	
+			@Override
+			public void onClick(View arg0) {
+				Intent addShoppingExpense = new Intent(getActivity(), DialogAddExpense.class);
+				addShoppingExpense.putExtra("expenseId", 2);
+				startActivity(addShoppingExpense);
+			}
+		});
 	}
 
 	private void setDebts(double debts) {

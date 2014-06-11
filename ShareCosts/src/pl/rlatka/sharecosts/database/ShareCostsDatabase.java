@@ -182,7 +182,7 @@ public class ShareCostsDatabase {
 			pStatement.setInt(1, debt.getCreditor().getId());
 			pStatement.setInt(2, debt.getDebtor().getId());
 			pStatement.setInt(3, debt.getType().getId());
-			pStatement.setDouble(4, debt.getAmmount());
+			pStatement.setDouble(4, debt.getAmount());
 			pStatement.setString(5, debt.getDescription());
 			
 			if( pStatement.executeUpdate() == 0 )
@@ -266,14 +266,14 @@ public class ShareCostsDatabase {
 	}
 	
 	public ArrayList<Expense> getDebts(int flatmateId) throws SQLException {
-		return getDebts(EXPENSE_DEBTOR_ID, flatmateId);
+		return getExpensess(EXPENSE_DEBTOR_ID, flatmateId);
 	}
 
-	public ArrayList<Expense> getCredits(int flatmateId) throws SQLException {
-		return getDebts(EXPENSE_CREDITOR_ID, flatmateId);
+	public ArrayList<Expense> getExpenses(int flatmateId) throws SQLException {
+		return getExpensess(EXPENSE_CREDITOR_ID, flatmateId);
 	}
 	
-	private ArrayList<Expense> getDebts(String whoId,int flatmateId) throws SQLException {
+	private ArrayList<Expense> getExpensess(String whoId,int flatmateId) throws SQLException {
 		ArrayList<Expense> debts = new ArrayList<>();
 		
 		try {

@@ -3,21 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ImageButton
-        android:id="@+id/button_delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:src="@android:drawable/ic_delete" />
-
     <TextView
         android:id="@+id/text_flatmate_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textColor="#000"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
         android:id="@+id/text_amount"
@@ -26,7 +19,18 @@
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/button_delete"
         android:layout_marginRight="@dimen/margin_normall"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textColor="@color/green"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <ImageButton
+        android:id="@+id/button_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="0dp"
+        android:background="@android:color/transparent"
+        android:src="@android:drawable/ic_delete" />
 
     <TextView
         android:id="@+id/text_description"
@@ -34,8 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/text_flatmate_name"
-        android:layout_toLeftOf="@+id/button_delete"
-        android:layout_marginRight="@dimen/margin_normall"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#000" />
 
 </RelativeLayout>

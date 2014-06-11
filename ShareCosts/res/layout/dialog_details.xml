@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="@dimen/activity_horizontal_margin" >
 
     <RadioGroup
@@ -27,21 +27,20 @@
 
     <ListView
         android:id="@+id/list"
-        android:layout_marginTop="@dimen/margin_normall"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button_close"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/radioGroup" >
-
+        android:layout_below="@+id/radioGroup"
+        android:layout_marginTop="@dimen/margin_normall" >
     </ListView>
 
     <Button
         android:id="@+id/button_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/margin_normall"
+        android:layout_below="@+id/list"
         android:text="@string/button_close" />
 
 </RelativeLayout>

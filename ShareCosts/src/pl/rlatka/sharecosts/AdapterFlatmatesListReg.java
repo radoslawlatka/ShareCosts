@@ -13,13 +13,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class AdapterFlatmatesList extends ArrayAdapter<Flatmate> {
+public class AdapterFlatmatesListReg extends ArrayAdapter<Flatmate> {
 
 	private ArrayList<Flatmate> flatmates;
 	private Context context;
 	private int resource;
 
-	public AdapterFlatmatesList(Context context, int resource, List<Flatmate> objects) {
+	public AdapterFlatmatesListReg(Context context, int resource, List<Flatmate> objects) {
 		super(context, resource, objects);
 
 		this.flatmates = (ArrayList<Flatmate>) objects;

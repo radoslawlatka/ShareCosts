@@ -41,7 +41,15 @@
         
         <activity
             android:name="pl.rlatka.sharecosts.DialogDetails"
-            android:theme="@style/AppTheme"
+            android:theme="@android:style/Theme.Holo.Light.Dialog"
+            android:label="@string/label_details"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        
+        <activity
+            android:name="pl.rlatka.sharecosts.DialogAddExpense"
+            android:theme="@android:style/Theme.Holo.Light.Dialog"
+            android:label="@string/label_add_expense"
             android:windowSoftInputMode="stateHidden" >
         </activity>
         
