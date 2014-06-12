@@ -5,6 +5,7 @@
     <string name="label_add_flatmate">Dodaj mieszkańca</string>
     <string name="label_details">Szczegóły</string>
     <string name="label_add_expense">Dodaj wydatek</string>
+    <string name="label_delete_expense">Usuń wydatek</string>
     <string name="action_settings">Settings</string>
     <string name="text_database_name">Nazwa bazy danych:</string>
     <string name="text_database_address">Adres bazy danych:</string>
@@ -33,8 +34,13 @@
     <string name="text_amount">Kwota</string>
     <string name="text_category">Kategoria</string>
     <string name="text_description">Opis</string>
+    <string name="text_phone_number">Numer telefonu</string>
     <string name="text_login">Zaloguj</string>
+    <string name="text_old_password">Stare hasło</string>
+    <string name="text_new_password">Nowe hasło</string>
+    <string name="text_repeat_password">Powtórz hasło</string>
     <string name="text_logout">Wyloguj</string>
+    <string name="text_are_you_sure">Jesteś pewien że chcesz usunąć?</string>
     <string name="text_select_flatmates">Wybierz współlokatorów: </string>
     <string name="button_add">Dodaj</string>
     <string name="button_shopping">Zakupy</string>
@@ -42,8 +48,9 @@
     <string name="button_credit">Pożyczka</string>
     <string name="button_bills">Rachunki</string>
     <string name="button_party">Impreza</string>
+    <string name="button_change_image">Zmień obraz</string>
     <string name="button_debt">Pożyczka</string>
-    <string name="button_remind">Przypomij</string>
+    <string name="button_remind">Przypomnij o należnościach</string>
     <string name="button_others">Inne</string>
     <string name="button_close">Zamknij</string>
     <string name="button_login">Zaloguj</string>
@@ -56,5 +63,6 @@
     <string name="toast_expense_added">Dodano nowy wydatek</string>
     <string name="toast_incorrect_amount">Niepoprawna wartość</string>
     <string name="toast_any_flatmate">Nie wybrałeś żadnego lokatora</string>
+    <string name="toast_expense_removed">Wydatek został usunięty</string>
 
 </resources>

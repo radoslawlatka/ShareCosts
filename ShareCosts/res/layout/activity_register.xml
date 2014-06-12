@@ -16,12 +16,14 @@
 
         <Button
             android:id="@+id/button_cancel"
+            style="@style/Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@android:string/cancel" />
 
         <Button
             android:id="@+id/button_register"
+            style="@style/Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_register" />
@@ -67,6 +69,7 @@
 
     <Button
         android:id="@+id/button_add_flatmate"
+            style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -78,6 +81,7 @@
     <ListView
         android:id="@+id/list_flatmates"
         android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/margin_normall"
         android:layout_height="100dp"
         android:layout_above="@+id/progressBar"
         android:layout_alignLeft="@+id/button_add_flatmate"

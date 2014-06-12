@@ -5,5 +5,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="margin_normall">10dp</dimen>
     <dimen name="dialog_width">300dp</dimen>
+    <dimen name="button_txt_size">20dp</dimen>
 
 </resources>

@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -18,7 +20,7 @@ public class FragmentMain extends Fragment {
 	private ShareCosts shareCosts;
 	private TextView nameText, balanceText, debtsText, creditsText;
 	private ImageButton detailsButton;
-	private Button shoppingButton;
+	private Button shoppingButton, billsButton, rentButton, partyButton, loanButton, otherButton, remindButton;
 	
 	public FragmentMain() {
 		shareCosts = ShareCosts.getInstance();
@@ -34,7 +36,13 @@ public class FragmentMain extends Fragment {
 		debtsText = (TextView) view.findViewById(R.id.debts);
 		creditsText = (TextView) view.findViewById(R.id.credits);
 		detailsButton = (ImageButton) view.findViewById(R.id.button_details);
-		shoppingButton= (Button) view.findViewById(R.id.button_shopping);
+		shoppingButton = (Button) view.findViewById(R.id.button_shopping);
+		billsButton = (Button) view.findViewById(R.id.button_bills);
+		rentButton = (Button) view.findViewById(R.id.button_rent);
+		partyButton = (Button) view.findViewById(R.id.button_party);
+		loanButton = (Button) view.findViewById(R.id.button_loan);
+		otherButton = (Button) view.findViewById(R.id.button_others);
+		remindButton = (Button) view.findViewById(R.id.button_remind);
 		
 		nameText.setText(shareCosts.getFlatmate().getName());
 	
@@ -46,6 +54,12 @@ public class FragmentMain extends Fragment {
 	}
 	
 	private void initListeners() {
+		nameText.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				replaceFragment(new FragmentProfile());
+			}
+		});
 		detailsButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -59,13 +73,56 @@ public class FragmentMain extends Fragment {
 		shoppingButton.setOnClickListener(new View.OnClickListener() {	
 			@Override
 			public void onClick(View arg0) {
-				Intent addShoppingExpense = new Intent(getActivity(), DialogAddExpense.class);
-				addShoppingExpense.putExtra("expenseId", 2);
-				startActivity(addShoppingExpense);
+				showAddExpenseDialog(2);
+			}
+		});
+		
+		billsButton.setOnClickListener(new View.OnClickListener() {	
+			@Override
+			public void onClick(View arg0) {
+				showAddExpenseDialog(1);
+			}
+		});
+		
+		partyButton.setOnClickListener(new View.OnClickListener() {	
+			@Override
+			public void onClick(View arg0) {
+				showAddExpenseDialog(3);
+			}
+		});
+		
+		rentButton.setOnClickListener(new View.OnClickListener() {	
+			@Override
+			public void onClick(View arg0) {
+				showAddExpenseDialog(4);
+			}
+		});
+		
+		loanButton.setOnClickListener(new View.OnClickListener() {	
+			@Override
+			public void onClick(View arg0) {
+				showAddExpenseDialog(5);
+			}
+		});
+		
+		otherButton.setOnClickListener(new View.OnClickListener() {	
+			@Override
+			public void onClick(View arg0) {
+				showAddExpenseDialog(6);
 			}
 		});
 	}
 
+	private void replaceFragment(Fragment fragment) {
+		getFragmentManager().beginTransaction().replace(R.id.container, fragment).commitAllowingStateLoss();
+	}
+	
+	private void showAddExpenseDialog(int categoryId) {
+		Intent addShoppingExpense = new Intent(getActivity(), DialogAddExpense.class);
+		addShoppingExpense.putExtra("expenseId", categoryId);
+		startActivity(addShoppingExpense);
+	}
+	
 	private void setDebts(double debts) {
 		debtsText.setText("-" + debts);
 	}
@@ -114,6 +171,12 @@ public class FragmentMain extends Fragment {
 			setCredits(credits);
 			setBalance();
 		}
+	}
+
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		
+		super.onCreateOptionsMenu(menu, inflater);
 	}
 
 }

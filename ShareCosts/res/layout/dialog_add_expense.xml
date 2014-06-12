@@ -39,6 +39,7 @@
 
     <Button
         android:id="@+id/button_ok"
+        style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -47,6 +48,7 @@
 
     <Button
         android:id="@+id/button_cancel"
+        style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -65,9 +67,9 @@
         android:id="@+id/edit_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_normall"
         android:layout_alignLeft="@+id/text_category"
         android:layout_below="@+id/text_category"
+        android:layout_marginTop="@dimen/margin_normall"
         android:ems="6"
         android:hint="@string/text_amount"
         android:inputType="numberDecimal" >

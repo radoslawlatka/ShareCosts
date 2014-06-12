@@ -1,11 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:padding="@dimen/activity_horizontal_margin" >
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="236dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_normall" >
 
@@ -14,9 +14,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_marginBottom="@dimen/margin_normall"
-            android:layout_toLeftOf="@+id/picture"
             android:orientation="vertical" >
 
             <TextView
@@ -40,9 +40,9 @@
                     android:id="@+id/balance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:layout_marginLeft="@dimen/margin_normall"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow android:layout_marginTop="@dimen/margin_normall" >
@@ -81,10 +81,9 @@
 
                 <ImageButton
                     android:id="@+id/button_details"
-                    android:background="@android:color/transparent"
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:src="@drawable/details" />
             </TableRow>
         </TableLayout>
@@ -93,23 +92,25 @@
             android:id="@+id/picture"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:gravity="right"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="bottom"
             android:scaleType="fitCenter"
             android:src="@drawable/person" />
+
     </RelativeLayout>
 
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_marginLeft="@dimen/margin_normall"
         android:gravity="center_vertical"
         android:stretchColumns="*" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-        	android:layout_marginBottom="@dimen/margin_normall"
+            android:layout_marginBottom="@dimen/margin_normall"
             android:text="@string/text_add_expense"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -178,7 +179,6 @@
             android:layout_weight="1"
             android:maxHeight="48dp"
             android:text="@string/button_remind" />
-
     </TableLayout>
 
 </LinearLayout>

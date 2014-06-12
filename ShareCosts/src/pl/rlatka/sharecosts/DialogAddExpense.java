@@ -78,7 +78,9 @@ public class DialogAddExpense extends Activity {
 	private ArrayList<Expense> splitExpense(ArrayList<Flatmate> flatmates, Flatmate creditor, int expenseTypeId, double amount) {
 		ArrayList<Expense> expenses = new ArrayList<>();
 		double expenseAmount = Math.round(amount/(flatmates.size()+1)*100.)/100.;
+		
 		ExpenseType expenseType = new ExpenseType(expenseTypeId, categoryName.getText().toString(), "");
+		
 		for(Flatmate f :  flatmates) {
 			expenses.add(new Expense(-1, creditor, f, expenseType, new Status(1, "unpaid"), expenseAmount, descriptionEdit.getText().toString()));
 		}
@@ -98,7 +100,7 @@ public class DialogAddExpense extends Activity {
 			try {
 				db.open();
 				ShareCosts sc = ShareCosts.getInstance();
-				for(Expense e : splitExpense(sc.getFlatmates(), sc.getFlatmate(), expenseTypeId, Double.valueOf(amountEdit.getText().toString()))) {
+				for(Expense e : splitExpense(flatmatesListAdapter.getCheckedFlatmates(), sc.getFlatmate(), expenseTypeId, Double.valueOf(amountEdit.getText().toString()))) {
 					db.addExpense(e);
 				}
 				

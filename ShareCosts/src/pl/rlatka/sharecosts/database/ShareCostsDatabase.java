@@ -103,12 +103,51 @@ public class ShareCostsDatabase {
 		}	
 	}
 	
+
+	public void updateDescription(int flatmateId, String description) throws SQLException {
+		Log.d(DTAG, "Update flatmate description...");
+		try {			
+			pStatement = conn.prepareStatement("UPDATE " + FLATMATE_TABLE + " SET " + FLATMATE_DESCRIPTION + "=? WHERE " + FLATMATE_ID + "=?");
+			pStatement.setString(1, description);
+			pStatement.setInt(2, flatmateId);
+			pStatement.executeUpdate();
+		} finally {
+			if( rs != null )
+				rs.close();
+		}
+	} 
+	
+	public void updatePassword(int flatmateId, String password) throws SQLException {
+		Log.d(DTAG, "Update flatmate description...");
+		try {			
+			pStatement = conn.prepareStatement("UPDATE " + FLATMATE_TABLE + " SET " + FLATMATE_PASSWORD + "=? WHERE " + FLATMATE_ID + "=?");
+			pStatement.setString(1, password);
+			pStatement.setInt(2, flatmateId);
+			pStatement.executeUpdate();
+		} finally {
+			if( rs != null )
+				rs.close();
+		}
+	} 
+	
+	public void updatePhoneNumber(int flatmateId, String phoneNumber) throws SQLException {
+		Log.d(DTAG, "Update flatmate description...");
+		try {			
+			pStatement = conn.prepareStatement("UPDATE " + FLATMATE_TABLE + " SET " + FLATMATE_PHONE + "=? WHERE " + FLATMATE_ID + "=?");
+			pStatement.setString(1, phoneNumber);
+			pStatement.setInt(2, flatmateId);
+			pStatement.executeUpdate();
+		} finally {
+			if( rs != null )
+				rs.close();
+		}
+	} 
+	
 	public double getExpensesAmmount(Flatmate flatmate) throws SQLException {
 		Log.d(DTAG, "Getting credits ammount...");
 		try {			
 			pStatement = conn.prepareStatement("SELECT SUM(" + EXPENSE_AMOUNT + ") FROM " + EXPENSE_TABLE + " WHERE " + EXPENSE_DEBTOR_ID + "=?");
 			pStatement.setInt(1, flatmate.getId());
-			pStatement.executeQuery();
 			
 			rs = pStatement.executeQuery();
 			
@@ -118,6 +157,19 @@ public class ShareCostsDatabase {
 				return 0;
 			}
 			
+		} finally {
+			if( rs != null )
+				rs.close();
+		}	
+	}
+	
+	public void removeExpenses(int id) throws SQLException {
+		Log.d(DTAG, "Deleting expense...");
+		try {			
+			pStatement = conn.prepareStatement("DELETE FROM " + EXPENSE_TABLE + " WHERE " + EXPENSE_ID + "=?");
+			pStatement.setInt(1, id);	
+			pStatement.execute();
+
 		} finally {
 			if( rs != null )
 				rs.close();
@@ -504,6 +556,7 @@ public class ShareCostsDatabase {
     	
     	System.out.println(URL);
     	System.out.println(USER + " " + PASSWORD);
-	} 	
+	}
+	
 
 }
